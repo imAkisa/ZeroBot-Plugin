@@ -211,7 +211,7 @@ func init() {
 	sus := make([]int64, 0, 16)
 	// 解析命令行参数
 	d := flag.Bool("d", false, "Enable debug level log and higher.")
-	w := flag.Bool("w", false, "Enable warning level log and higher.")
+	w := flag.Bool("w", true, "Enable warning level log and higher.")
 	h := flag.Bool("h", false, "Display this help.")
 	// g := flag.String("g", "127.0.0.1:3000", "Set webui url.")
 	// 直接写死 AccessToken 时，请更改下面第二个参数
@@ -219,13 +219,13 @@ func init() {
 	// 直接写死 URL 时，请更改下面第二个参数
 	url := flag.String("u", "ws://127.0.0.1:6700", "Set Url of WSClient.")
 	// 默认昵称
-	adana := flag.String("n", "椛椛", "Set default nickname.")
-	prefix := flag.String("p", "/", "Set command prefix.")
+	adana := flag.String("n", "Midgard", "Set default nickname.")
+	prefix := flag.String("p", ">", "Set command prefix.")
 	runcfg := flag.String("c", "", "Run from config file.")
 	save := flag.String("s", "", "Save default config to file and exit.")
-	late := flag.Uint("l", 233, "Response latency (ms).")
+	late := flag.Uint("l", 50, "Response latency (ms).")
 	rsz := flag.Uint("r", 4096, "Receiving buffer ring size.")
-	maxpt := flag.Uint("x", 4, "Max process time (min).")
+	maxpt := flag.Uint("x", 5, "Max process time (min).")
 
 	flag.Parse()
 
@@ -251,7 +251,7 @@ func init() {
 	}
 
 	// 通过代码写死的方式添加主人账号
-	// sus = append(sus, 12345678)
+	 sus = append(sus, 1058349991)
 	// sus = append(sus, 87654321)
 
 	if *runcfg != "" {
@@ -309,7 +309,7 @@ func main() {
 		rand.Seed(time.Now().UnixNano()) //nolint: staticcheck
 	}
 	// 帮助
-	zero.OnFullMatchGroup([]string{"/help", ".help", "菜单"}, zero.OnlyToMe).SetBlock(true).
+	zero.OnFullMatchGroup([]string{">help", ">菜单"}, zero.OnlyToMe).SetBlock(true).
 		Handle(func(ctx *zero.Ctx) {
 			ctx.SendChain(message.Text(banner.Banner, "\n管理发送\"/服务列表\"查看 bot 功能\n发送\"/用法name\"查看功能用法"))
 		})
