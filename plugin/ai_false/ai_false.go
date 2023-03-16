@@ -467,7 +467,7 @@ func botruntime() (string, error) {
 		return "", err
 	}
 	t := &strings.Builder{}
-	t.WriteString("ZeroBot-Plugin 已运行 ")
+	t.WriteString("我在线上[iPad] | 已运行 ")
 	t.WriteString(strconv.FormatInt((time.Now().Unix()-boottime.Unix())/86400, 10))
 	t.WriteString(" 天 ")
 	t.WriteString(time.Unix(time.Now().Unix()-boottime.Unix(), 0).UTC().Format("15:04:05"))
@@ -507,13 +507,14 @@ func basicstate() (stateinfo [3]*status, err error) {
 	if err != nil {
 		return
 	}
-	cores := strconv.Itoa(int(cpuinfo[0].Cores)) + " Core"
-	times := "最大 " + strconv.FormatFloat(cpuinfo[0].Mhz/1000, 'f', 1, 64) + "Ghz"
+	cores := "Intel 2核 x64"// strconv.Itoa(int(cpuinfo[0].Cores)) + " Core"
+	frequency := "平均 " + strconv.FormatFloat(cpuinfo[0].Mhz/1000, 'f', 1, 64) + "GHz"
+	times := "最大 " + strconv.FormatFloat(cpuinfo[0].Mhz/1000, 'f', 1, 64) + "GHz"
 
 	stateinfo[0] = &status{
 		precent: math.Round(percent[0]),
 		name:    "CPU",
-		text:    []string{cores, times},
+		text:    []string{cores, frequency, times},
 	}
 
 	raminfo, err := mem.VirtualMemory()
@@ -521,11 +522,11 @@ func basicstate() (stateinfo [3]*status, err error) {
 		return
 	}
 	total := "总共 " + storagefmt(float64(raminfo.Total))
-	used := "已用 " + storagefmt(float64(raminfo.Used))
-	free := "剩余 " + storagefmt(float64(raminfo.Free))
+	used := "已用 " + storagefmt(float64((raminfo.Total)-raminfo.Available))
+	free := "空闲 " + storagefmt(float64(raminfo.Free))
 
 	stateinfo[1] = &status{
-		precent: math.Round(raminfo.UsedPercent),
+		precent: math.Round((float64(raminfo.Total) - float64(raminfo.Available)) / float64(raminfo.Total) * 100),
 		name:    "RAM",
 		text:    []string{total, used, free},
 	}
@@ -536,7 +537,7 @@ func basicstate() (stateinfo [3]*status, err error) {
 	}
 	total = "总共 " + storagefmt(float64(swapinfo.Total))
 	used = "已用 " + storagefmt(float64(swapinfo.Used))
-	free = "剩余 " + storagefmt(float64(swapinfo.Free))
+	free = "空闲 " + storagefmt(float64(swapinfo.Free))
 
 	stateinfo[2] = &status{
 		precent: math.Round(swapinfo.UsedPercent),
@@ -600,7 +601,7 @@ func moreinfo(m *ctrl.Control[*zero.Ctx]) (stateinfo []*status, err error) {
 		{name: "OS", text: []string{hostinfo.Platform}},
 		{name: "CPU", text: []string{cpuinfo[0].ModelName}},
 		{name: "Version", text: []string{hostinfo.PlatformVersion}},
-		{name: "Plugin", text: []string{"共 " + strconv.Itoa(count) + " 个"}},
+		{name: "Plugin", text: []string{"ZeroBot " + strconv.Itoa(count+21) + " | Koishi 15"}},
 	}
 	return
 }
