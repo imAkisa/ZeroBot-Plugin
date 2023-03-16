@@ -11,7 +11,7 @@ import (
 
 func init() {
 	control.Register("moyucalendar", &ctrl.Options[*zero.Ctx]{
-		DisableOnDefault: true,
+		DisableOnDefault: false,
 		Brief:            "摸鱼人日历",
 		Help: "- /启用 moyucalendar\n" +
 			"- /禁用 moyucalendar\n" +
