@@ -31,10 +31,9 @@ func init() { // 插件主体
 			ctx.SendChain(message.Text(
 				[]string{
 					nickname + "在此，有何贵干~",
-					"(っ●ω●)っ在~",
 					"这里是" + nickname + "(っ●ω●)っ",
-					nickname + "不在呢~",
-				}[rand.Intn(4)],
+					nickname + "在窥屏哦",
+				}[rand.Intn(3)],
 			))
 		})
 	// 戳一戳
@@ -42,14 +41,26 @@ func init() { // 插件主体
 		Handle(func(ctx *zero.Ctx) {
 			var nickname = zero.BotConfig.NickName[0]
 			switch {
-			case poke.Load(ctx.Event.GroupID).AcquireN(3):
+			case poke.Load(ctx.Event.GroupID).AcquireN(7):
 				// 5分钟共8块命令牌 一次消耗3块命令牌
 				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("请不要戳", nickname, " >_<"))
+				ctx.SendChain(message.Text(
+					[]string{
+						"你戳了戳" + nickname + "的木鱼，功德+1",
+						"有笨蛋在戳我，我不说是谁",
+					}[rand.Intn(2)],
+				))
 			case poke.Load(ctx.Event.GroupID).Acquire():
 				// 5分钟共8块命令牌 一次消耗1块命令牌
 				time.Sleep(time.Second * 1)
-				ctx.SendChain(message.Text("喂(#`O′) 戳", nickname, "干嘛！"))
+				ctx.SendChain(message.Text(
+					[]string{
+						"戳回去<( ￣^￣)",
+						"别戳啦！",
+						"你再戳我要生气了！",
+					}[rand.Intn(3)],
+				))
+				ctx.Send(message.Poke(ctx.Event.UserID))
 			default:
 				// 频繁触发，不回复
 			}
