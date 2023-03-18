@@ -30,8 +30,6 @@ func handle(ctx *zero.Ctx) {
 	result := rawOptions[rand.Intn(len(rawOptions))]
 	name := ctx.Event.Sender.NickName
 	ctx.SendChain(message.Text("> ", name, "\n",
-		"你的选项有:", "\n",
-		strings.Join(options, "\n"), "\n",
-		"你最终会选: ", result,
+		"当然是", result, "啦！",
 	))
 }
