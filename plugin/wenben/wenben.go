@@ -49,7 +49,12 @@ func init() { // 主函数
 				ctx.SendChain(message.Text("出现错误捏：", err))
 				return
 			}
-			ctx.SendChain(message.Text(str, "天气如下:\n", helper.BytesToString(es)))
+			data := helper.BytesToString(es)
+			if strings.Contains(data, ":") && strings.ContainsAny(data, "0123456789") {
+				ctx.SendChain(message.Text(str, "天气如下:\n", data))
+			} else {
+				ctx.SendChain(message.Text("查询出错，请确认城市名称是否正确"))
+			}
 		})
 	en.OnSuffix("拼音").SetBlock(true).
 		Handle(func(ctx *zero.Ctx) {
