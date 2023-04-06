@@ -129,7 +129,7 @@ func init() { // 插件主体
 			if now > 11 && now < 15 { // 中午
 				ctx.SendChain(message.Reply(ctx.Event.MessageID), randText(
 					"午安w",
-					"午觉要好好睡哦，ATRI会陪伴在你身旁的w",
+					"午觉要好好睡哦，Midgard会陪伴在你身旁的w",
 					"嗯哼哼~睡吧，就像平常一样安眠吧~o(≧▽≦)o",
 					"睡你午觉去！哼唧！！",
 				))
@@ -158,7 +158,7 @@ func init() { // 插件主体
 			case now >= 11 && now < 15:
 				ctx.SendChain(message.Reply(ctx.Event.MessageID), randText(
 					"午安w",
-					"午觉要好好睡哦，ATRI会陪伴在你身旁的w",
+					"午觉要好好睡哦，Midgard会陪伴在你身旁的w",
 					"嗯哼哼~睡吧，就像平常一样安眠吧~o(≧▽≦)o",
 					"睡你午觉去！哼唧！！",
 				))
