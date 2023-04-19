@@ -7,12 +7,12 @@ require (
 	github.com/FloatTech/AnimeAPI v1.6.1-0.20230409024643-f25135dee0da
 	github.com/FloatTech/floatbox v0.0.0-20230331064925-9af336a84944
 	github.com/FloatTech/gg v1.1.3-0.20230226151425-6ea91286ba08
-	github.com/FloatTech/imgfactory v0.2.2-0.20230322091809-b0ddbe44b94b
+	github.com/FloatTech/imgfactory v0.2.2-0.20230413152719-e101cc3606ef
 	github.com/FloatTech/rendercard v0.0.10-0.20230223064326-45d29fa4ede9
 	github.com/FloatTech/sqlite v1.6.2
 	github.com/FloatTech/ttl v0.0.0-20220715042055-15612be72f5b
-	github.com/FloatTech/zbpctrl v1.5.3-0.20230408032827-50ef967f2849
-	github.com/FloatTech/zbputils v1.6.2-0.20230408085317-f2f525cff6fc
+	github.com/FloatTech/zbpctrl v1.5.3-0.20230411055601-7cdff751dd67
+	github.com/FloatTech/zbputils v1.6.2-0.20230411114057-4c71136244b2
 	github.com/RomiChan/syncx v0.0.0-20221202055724-5f842c53020e
 	github.com/RomiChan/websocket v1.4.3-0.20220227141055-9b2c6168c9c5
 	github.com/antchfx/htmlquery v1.2.5
