@@ -152,11 +152,6 @@ import (
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/ygo"              // 游戏王相关插件
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/ymgal"            // 月幕galgame
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/chatgpt"            // chatgpt
-	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/games"            // 小游戏
-	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/draw"            // 服务详情
-	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/cybercat"            // 云养猫
-	
-	
 	
 	// _ "github.com/FloatTech/ZeroBot-Plugin/plugin/wtf"           // 鬼东西
 
@@ -182,7 +177,7 @@ import (
 
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/ai_reply" // 人工智能回复
 
-	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/thesaurus" // 词典匹配回复
+	// _ "github.com/FloatTech/ZeroBot-Plugin/plugin/thesaurus" // 词典匹配回复
 
 	_ "github.com/FloatTech/ZeroBot-Plugin/plugin/breakrepeat" // 打断复读
 
@@ -261,7 +256,7 @@ func init() {
 	}
 
 	// 通过代码写死的方式添加主人账号
-	// sus = append(sus, 1234)
+	 sus = append(sus, 1058349991)
 	// sus = append(sus, 87654321)
 
 	// 启用 webui
